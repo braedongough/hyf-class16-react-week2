@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import WatchCount from './WatchCount'
+import { Pokemon } from './pokemon'
 import './App.css'
 
 function Counter({ updateCount, count, label }) {
@@ -36,36 +38,10 @@ function CounterWithState() {
     )
 }
 
-function Pokemon() {
-    const [pokemonState, setPokemon] = useState()
-
-    useEffect(() => {
-        fetch('https://pokeapi.co/api/v2/pokemon/pikachu')
-            .then((res) => res.json())
-            .then((data) => {
-                setPokemon(data)
-            })
-    }, [])
-
-    if (!pokemonState) {
-        return <h1>Loading...</h1>
-    }
-
-    return (
-        <div>
-            <h1>{pokemonState.name}</h1>
-            <img
-                src={pokemonState.sprites.front_shiny}
-                alt={`${pokemonState.name} sprite`}
-            />
-        </div>
-    )
-}
-
 function App() {
     return (
         <div className="App">
-            <Pokemon />
+            <WatchCount />
         </div>
     )
 }
