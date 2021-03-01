@@ -15,11 +15,14 @@ function WatchCount() {
 
     useEffect(() => {
         if (isActive) {
+            console.log('timeout is created')
             const timer = setTimeout(() => {
+                console.log('timout is called')
                 setCount((prev) => prev + 1)
             }, timeoutTime)
 
             return () => {
+                console.log('we are clean up now')
                 clearTimeout(timer)
             }
         }
